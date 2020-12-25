@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://example.org/interview/c&#43;&#43;/</loc>
+    <lastmod>2020-12-24T23:42:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/</loc>
+    <lastmod>2020-12-24T23:42:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/interview/</loc>
+    <lastmod>2020-12-24T23:42:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/interview/operatingsystem/</loc>
+    <lastmod>2020-12-24T23:41:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/interview/datastructure/</loc>
+    <lastmod>2020-12-24T23:38:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/interview/database/</loc>
+    <lastmod>2020-12-24T23:37:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/interview/computernetwork/</loc>
+    <lastmod>2020-12-24T23:35:01+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/</loc>
+  </url>
+  
+</urlset>

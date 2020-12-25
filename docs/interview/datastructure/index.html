@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="en" data-figures="" class="page">
+  <head>
+<title>Data Structure | C&#43;&#43; Interview Notes</title>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.70.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta property="og:locale" content="en" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="数据结构 哈希表 基本思想：首先在元素的关键字K和元素的位置P之间建立一个对应关系f，使得P=f(K),其中f成为哈希函数。创建哈希表时，把关键字K的元素直接存入地址为f(K)的单元；查找关键字K的元素时利用哈希函数计算出该元素的存储位置P=f(K). 当关键字集合很大时，关键字值不同的元素可能会映像到哈希表的同一地址 …">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="">
+<meta name="twitter:title" content="Data Structure" />
+<meta property="og:url" content="http://example.org/interview/datastructure/" />
+<meta property="og:title" content="Data Structure" />
+<meta property="og:description" content="数据结构 哈希表 基本思想：首先在元素的关键字K和元素的位置P之间建立一个对应关系f，使得P=f(K),其中f成为哈希函数。创建哈希表时，把关键字K的元素直接存入地址为f(K)的单元；查找关键字K的元素时利用哈希函数计算出该元素的存储位置P=f(K). 当关键字集合很大时，关键字值不同的元素可能会映像到哈希表的同一地址 …" />
+<meta property="og:image" content="http://example.org/" />
+<link rel="apple-touch-icon" sizes="180x180" href='http://example.org/icons/apple-touch-icon.png'>
+<link rel="icon" type="image/png" sizes="32x32" href='http://example.org/icons/favicon-32x32.png'>
+<link rel="manifest" href='http://example.org/icons/site.webmanifest'>
+<link rel="mask-icon" href='http://example.org/safari-pinned-tab.svg' color="#002538">
+<meta name="msapplication-TileColor" content="#002538">
+<meta name="theme-color" content="#002538">
+
+<link rel="canonical" href="http://example.org/interview/datastructure/">
+
+    
+
+    
+    
+    <link rel="preload" href="http://example.org/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity = "sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" as="style" crossorigin="anonymous">
+    <link rel="preload" href="http://example.org/js/bundle.min.9f6cb298893e22967d4ec03bf3dcfdf01efdcd70cd33e505917e311ed835fe9b42e321521a4d25804b9c271342bfd52dfb7264bc165aa4da1182a4394f0e53ea.js" as="script" integrity=
+    "sha512-n2yymIk&#43;IpZ9TsA789z98B79zXDNM&#43;UFkX4xHtg1/ptC4yFSGk0lgEucJxNCv9Ut&#43;3JkvBZapNoRgqQ5Tw5T6g==" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" type="text/css" href="http://example.org/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity="sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" crossorigin="anonymous">
+    
+  </head>
+  
+  
+    
+  
+  <body data-code="100" data-lines="false" id="documentTop">
+
+<header class="nav_header" >
+  <nav class="nav">
+    <a href='http://example.org/' class="nav_brand nav_item">
+        C&#43;&#43; Interview Notes
+      <div class="nav_close">
+        <div>
+          <svg class="icon">
+  <use xlink:href="#open-menu"></use>
+</svg>
+          <svg class="icon">
+  <use xlink:href="#closeme"></use>
+</svg>
+        </div>
+      </div>
+    </a>
+    <div class='nav_body nav_body_'>
+      
+      
+      
+        
+
+      
+<div class='follow'>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+</header>
+
+    <main>
+  
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title">Data Structure</h1><div class="post_meta">
+  
+    <svg class="icon">
+  <use xlink:href="#calendar"></use>
+</svg>
+    <span class="post_date">
+      Dec 24, 2020</span>
+</div>
+
+    
+  <div class="post_share">
+    Share on:
+    <a href="https://twitter.com/intent/tweet?text=Data%20Structure&url=http%3a%2f%2fexample.org%2finterview%2fdatastructure%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=http%3a%2f%2fexample.org%2finterview%2fdatastructure%2f&t=Data%20Structure" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#facebook"></use>
+</svg>
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+    </a>
+    <a href="http://example.org/interview/datastructure/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <use xlink:href="#copy"></use>
+</svg>
+    </a>
+  </div>
+
+    
+    
+    <h2>Overview</h2>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#数据结构">数据结构</a>
+      <ul>
+        <li><a href="#哈希表">哈希表</a></li>
+        <li><a href="#排序">排序</a></li>
+        <li><a href="#最短路径">最短路径</a></li>
+        <li><a href="#最小生成树">最小生成树</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    <h2 id="数据结构">数据结构</h2>
+<h3 id="哈希表">哈希表</h3>
+<p>基本思想：首先在元素的关键字K和元素的位置P之间建立一个对应关系f，使得P=f(K),其中f成为哈希函数。创建哈希表时，把关键字K的元素直接存入地址为f(K)的单元；查找关键字K的元素时利用哈希函数计算出该元素的存储位置P=f(K).
+当关键字集合很大时，关键字值不同的元素可能会映像到哈希表的同一地址上，即K1!=K2，但f(K1)=f(K2),这种现象称为hash冲突</p>
+<p>开放定址法：
+所谓的开放定址法就是一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入公式为：fi(key) = (f(key)+di) MOD m (di=1,2,3,……,m-1)
+用开放定址法解决冲突的做法是：当冲突发生时，使用某种探测技术在散列表中形成一个探测序列。沿此序列逐个单元地查找，直到找到给定的关键字，或者碰到一个开放的地址为止（插入时探查到开放的地址则将待插入的新结点存人该地址单元；查找时探测到开放的地址则表明表中无待查的关键字即查找失败）</p>
+<p>链地址法：
+链地址法的基本思想是：每个哈希表节点都有一个next指针，多个哈希表节点可以用next指针构成一个单向链表，被分配到同一个索引上的多个节点可以用这个单向链表连接起来</p>
+<h3 id="排序">排序</h3>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Average time complexity</th>
+<th>Worst time complexity</th>
+<th align="left">Space complexity</th>
+<th>Stable</th>
+<th>Place</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bubble sort</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td align="left">O(1)</td>
+<td>True</td>
+<td>In-place</td>
+</tr>
+<tr>
+<td>Selection sort</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td align="left">O(1)</td>
+<td>False</td>
+<td>In-place</td>
+</tr>
+<tr>
+<td>Insertion sort</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td align="left">O(1)</td>
+<td>True</td>
+<td>In-place</td>
+</tr>
+<tr>
+<td>Shell sort</td>
+<td>O(n^1.16) (Sedgewick)</td>
+<td>O(n^1.33) (Sedgewick)</td>
+<td align="left">O(1)</td>
+<td>False</td>
+<td>In-place</td>
+</tr>
+<tr>
+<td>Heap sort</td>
+<td>O(nlogn)</td>
+<td>O(nlogn)</td>
+<td align="left">O(1)</td>
+<td>False</td>
+<td>In-place</td>
+</tr>
+<tr>
+<td>Merge sort</td>
+<td>O(nlogn)</td>
+<td>O(nlogn)</td>
+<td align="left">O(n)</td>
+<td>True</td>
+<td>Out-place</td>
+</tr>
+<tr>
+<td>Quick sort</td>
+<td>O(nlogn)</td>
+<td>O(n^2)</td>
+<td align="left">O(logn)</td>
+<td>False</td>
+<td>In-place</td>
+</tr>
+<tr>
+<td>Bucket sort</td>
+<td>O(n+k)</td>
+<td>O(n^2)</td>
+<td align="left">O(n+k)</td>
+<td>True</td>
+<td>Out-place</td>
+</tr>
+<tr>
+<td>Counting sort</td>
+<td>O(n+k)</td>
+<td>O(n+k)</td>
+<td align="left">O(k)</td>
+<td>True</td>
+<td>Out-place</td>
+</tr>
+<tr>
+<td>Radix sort</td>
+<td>O(n*k)</td>
+<td>O(n*k)</td>
+<td align="left">O(n+k)</td>
+<td>True</td>
+<td>Out-place</td>
+</tr>
+</tbody>
+</table>
+<p>(1)冒泡排序</p>
+<p>冒泡排序就是把小的元素往前调或者把大的元素往后调。比较是相邻的两个元素比较，交换也发生在这两个元素之间。所以，如果两个元素相等，我想你是不会再无聊地把他们俩交换一下的；如果两个相等的元素没有相邻，那么即使通过前面的两两交换把两个相邻起来，这时候也不会交换，所以相同元素的前后顺序并没有改变，所以冒泡排序是一种稳定排序算法。</p>
+<p>(2)选择排序</p>
+<p>选择排序是给每个位置选择当前元素最小的，比如给第一个位置选择最小的，在剩余元素里面给第二个元素选择第二小的，依次类推，直到第n - 1个元素，第n个元素不用选择了，因为只剩下它一个最大的元素了。那么，在一趟选择，如果当前元素比一个元素小，而该小的元素又出现在一个和当前元素相等的元素后面，那么交换后稳定性就被破坏了。比较拗口，举个例子，序列5 8 5 2 9，我们知道第一遍选择第1个元素5会和2交换，那么原序列中2个5的相对前后顺序就被破坏了，所以选择排序不是一个稳定的排序算法。</p>
+<p>(3)插入排序
+插入排序是在一个已经有序的小序列的基础上，一次插入一个元素。当然，刚开始这个有序的小序列只有1个元素，就是第一个元素。比较是从有序序列的末尾开始，也就是想要插入的元素和已经有序的最大者开始比起，如果比它大则直接插入在其后面，否则一直往前找直到找到它该插入的位置。如果碰见一个和插入元素相等的，那么插入元素把想插入的元素放在相等元素的后面。所以，相等元素的前后顺序没有改变，从原无序序列出去的顺序就是排好序后的顺序，所以插入排序是稳定的。</p>
+<p>(4)快速排序
+快速排序有两个方向，左边的i下标一直往右走，当a[i] &lt;= a[center_index]，其中center_index是中枢元素的数组下标，一般取为数组第0个元素。而右边的j下标一直往左走，当a[j] &gt; a[center_index]。如果i和j都走不动了，i &lt;= j，交换a[i]和a[j],重复上面的过程，直到i &gt; j。 交换a[j]和a[center_index]，完成一趟快速排序。在中枢元素和a[j]交换的时候，很有可能把前面的元素的稳定性打乱，比如序列为5 3 3 4 3 8 9 10 11，现在中枢元素5和3（第5个元素，下标从1开始计）交换就会把元素3的稳定性打乱，所以快速排序是一个不稳定的排序算法，不稳定发生在中枢元素和a[j] 交换的时刻。</p>
+<p>(5)归并排序
+归并排序是把序列递归地分成短序列，递归出口是短序列只有1个元素（认为直接有序）或者2个序列（1次比较和交换），然后把各个有序的段序列合并成一个有序的长序列，不断合并直到原序列全部排好序。可以发现，在1个或2个元素时，1个元素不会交换，2个元素如果大小相等也没有人故意交换，这不会破坏稳定性。那么，在短的有序序列合并的过程中，稳定是是否受到破坏？没有，合并过程中我们可以保证如果两个当前元素相等时，我们把处在前面的序列的元素保存在结果序列的前面，这样就保证了稳定性。所以，归并排序也是稳定的排序算法。</p>
+<p>(6)基数排序
+基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序，最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以其是稳定的排序算法。</p>
+<p>(7)希尔排序(shell)
+希尔排序是按照不同步长对元素进行插入排序，当刚开始元素很无序的时候，步长最大，所以插入排序的元素个数很少，速度很快；当元素基本有序了，步长很小， 插入排序对于有序的序列效率很高。所以，希尔排序的时间复杂度会比O(n^2)好一些。由于多次插入排序，我们知道一次插入排序是稳定的，不会改变相同元素的相对顺序，但在不同的插入排序过程中，相同的元素可能在各自的插入排序中移动，最后其稳定性就会被打乱，所以shell排序是不稳定的。</p>
+<p>(8)堆排序
+我们知道堆的结构是节点i的孩子为2 * i和2 * i + 1节点，大顶堆要求父节点大于等于其2个子节点，小顶堆要求父节点小于等于其2个子节点。在一个长为n 的序列，堆排序的过程是从第n / 2开始和其子节点共3个值选择最大（大顶堆）或者最小（小顶堆），这3个元素之间的选择当然不会破坏稳定性。但当为n / 2 - 1， n / 2 - 2， &hellip; 1这些个父节点选择元素时，就会破坏稳定性。有可能第n / 2个父节点交换把后面一个元素交换过去了，而第n / 2 - 1个父节点把后面一个相同的元素没 有交换，那么这2个相同的元素之间的稳定性就被破坏了。所以，堆排序不是稳定的排序算法。</p>
+<h3 id="最短路径">最短路径</h3>
+<h4 id="迪杰斯特拉">迪杰斯特拉</h4>
+<p><img src="/image-20200920234535266.png" alt="image-20200920234535266"></p>
+<h4 id="贝尔曼福特">贝尔曼福特</h4>
+<p>对于一个图G(v,e)(v代表点集，e代表边集)，执行|v|-1次边集的松弛操作，所谓松弛操作，就是对于每个边e1(v,w)，将源点到w的距离更新为：原来源点到w的距离（如果还没有遍历过w则为源点到w距离为∞） 和 源点到v的距离加上v到w的距离 中较小的那个。v-1轮松弛操作之后，判断是否有源点能到达的负环，判断的方法就是，再执行一次边集的松弛操作，如果这一轮松弛操作，有松弛成功的边，那么就说明图中有负环。算法复杂度为O(VE)</p>
+<h3 id="最小生成树">最小生成树</h3>
+<h4 id="prim">Prim</h4>
+<p><img src="/image-20200920235531586.png" alt="image-20200920235531586"></p>
+<h4 id="kruskal">Kruskal</h4>
+<p><img src="/image-20200920235551309.png" alt="image-20200920235551309"></p>
+
+    
+      
+    
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    
+    <h2 class="mt-4">Recent Posts</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="http://example.org/interview/c&#43;&#43;/" class="nav-link">C&#43;&#43;</a>
+      </li>
+      <li>
+        <a href="http://example.org/interview/operatingsystem/" class="nav-link">Operating System</a>
+      </li>
+      <li>
+        <a href="http://example.org/interview/database/" class="nav-link">Database</a>
+      </li>
+      <li>
+        <a href="http://example.org/interview/computernetwork/" class="nav-link">Computer Network</a>
+      </li>
+    </ul>
+  </section>
+</aside>
+
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="arrow">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+</svg>
+
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='http://example.org/icons/apple-touch-icon.png' class="icon icon_2 transparent">
+    <p>Copyright<span class="year"></span> C&#43;&#43; INTERVIEW NOTES. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <use xlink:href="#arrow"></use>
+</svg>
+</a>
+
+  </div>
+</footer>
+    <script type="text/javascript" src="http://example.org/js/bundle.min.9f6cb298893e22967d4ec03bf3dcfdf01efdcd70cd33e505917e311ed835fe9b42e321521a4d25804b9c271342bfd52dfb7264bc165aa4da1182a4394f0e53ea.js" integrity="sha512-n2yymIk&#43;IpZ9TsA789z98B79zXDNM&#43;UFkX4xHtg1/ptC4yFSGk0lgEucJxNCv9Ut&#43;3JkvBZapNoRgqQ5Tw5T6g==" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
