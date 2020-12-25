@@ -1,7 +1,6 @@
 ---
 title: "C++"
 date: 2020-12-24T23:42:19+08:00
-draft: true
 toc: true
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: "Database"
 date: 2020-12-24T23:37:43+08:00
-draft: true
 toc: true
 ---
 

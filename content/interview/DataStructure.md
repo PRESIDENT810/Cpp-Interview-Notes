@@ -1,7 +1,6 @@
 ---
 title: "Data Structure"
 date: 2020-12-24T23:38:22+08:00
-draft: true
 toc: true
 ---
 

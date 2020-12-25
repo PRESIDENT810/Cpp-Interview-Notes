@@ -1,7 +1,6 @@
 ---
 title: "Operating System"
 date: 2020-12-24T23:41:42+08:00
-draft: true
 toc: true
 ---
 
