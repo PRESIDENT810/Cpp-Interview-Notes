@@ -1,0 +1,8 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "C++ Interview Notes"
+author = "Zhong Kaining"
+description = " "
+introDescription = " "
+mobileNavigation = "left"
+toc = true
