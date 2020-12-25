@@ -6,3 +6,4 @@ description = " "
 introDescription = " "
 mobileNavigation = "left"
 toc = true
+theme = "hugo-clarity"
