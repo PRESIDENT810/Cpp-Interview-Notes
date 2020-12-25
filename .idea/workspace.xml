@@ -30,6 +30,9 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/content" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/docs" />
     </key>
@@ -57,7 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1608882927850</updated>
       <workItem from="1608882931586" duration="909000" />
-      <workItem from="1608884108238" duration="2582000" />
+      <workItem from="1608884108238" duration="2837000" />
     </task>
     <servers />
   </component>
