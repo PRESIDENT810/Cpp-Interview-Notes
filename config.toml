@@ -7,3 +7,4 @@ introDescription = " "
 mobileNavigation = "left"
 toc = true
 theme = "hugo-clarity"
+publishDir = "docs"
