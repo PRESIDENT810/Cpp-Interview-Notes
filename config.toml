@@ -10,3 +10,4 @@ theme = "hugo-clarity"
 publishDir = "docs"
 contentdir = "content"
 layoutdir = "layouts"
+canonifyURLs = true
