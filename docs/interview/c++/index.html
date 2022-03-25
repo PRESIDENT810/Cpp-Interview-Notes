@@ -1,142 +1,57 @@
-
 <!DOCTYPE html>
-<html lang="en" data-figures="" class="page">
-  <head>
-<title>C&#43;&#43; | C&#43;&#43; Interview Notes</title>
-<meta charset="utf-8">
-<meta name="generator" content="Hugo 0.70.0" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta property="og:locale" content="en" />
-
+<html lang='en'><head>
+  <title>C&#43;&#43; | C&#43;&#43; Interview Notes</title>
+  <meta charset='utf-8'>
+  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+<meta property = 'og:locale' content = 'en_US' />
 <meta property="og:type" content="article">
+<meta property = 'og:title' content = 'C&#43;&#43;' />
 <meta name="description" content="C&#43;&#43; 内存机制 基本数据类型 char(1字节），bool（1字节），short（2字节），int（4字节），long（8字节），float（4字节），double（8字节）
 怎么判断float或者double为0 float32位中，有1位符号位，8位指数位，23位尾数为 double64位中，1位符号位，11位指 …">
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="">
-<meta name="twitter:title" content="C&#43;&#43;" />
-<meta property="og:url" content="https://president810.github.io/Cpp-Interview-Notes/interview/c&#43;&#43;/" />
-<meta property="og:title" content="C&#43;&#43;" />
-<meta property="og:description" content="C&#43;&#43; 内存机制 基本数据类型 char(1字节），bool（1字节），short（2字节），int（4字节），long（8字节），float（4字节），double（8字节）
-怎么判断float或者double为0 float32位中，有1位符号位，8位指数位，23位尾数为 double64位中，1位符号位，11位指 …" />
-<meta property="og:image" content="https://president810.github.io/Cpp-Interview-Notes/" />
-<link rel="apple-touch-icon" sizes="180x180" href='https://president810.github.io/Cpp-Interview-Notes/icons/apple-touch-icon.png'>
-<link rel="icon" type="image/png" sizes="32x32" href='https://president810.github.io/Cpp-Interview-Notes/icons/favicon-32x32.png'>
-<link rel="manifest" href='https://president810.github.io/Cpp-Interview-Notes/icons/site.webmanifest'>
-<link rel="mask-icon" href='https://president810.github.io/Cpp-Interview-Notes/safari-pinned-tab.svg' color="#002538">
-<meta name="msapplication-TileColor" content="#002538">
-<meta name="theme-color" content="#002538">
+<meta property = 'og:description' content = 'C&#43;&#43; 内存机制 基本数据类型 char(1字节），bool（1字节），short（2字节），int（4字节），long（8字节），float（4字节），double（8字节）
+怎么判断float或者double为0 float32位中，有1位符号位，8位指数位，23位尾数为 double64位中，1位符号位，11位指 …'>
+<meta property = 'og:url' content = 'https://president810.github.io/Cpp-Interview-Notes/interview/c&#43;&#43;/' />
+<meta property = 'og:image' content = 'images/%!s()'/>
+<meta name = 'twitter:card' content = 'summary_large_image' />
+<meta name = 'twitter:creator' content = ''>
+<meta name = 'twitter:title' content = 'C&#43;&#43;' />
+<meta property = 'twitter:description'  content = 'C&#43;&#43; 内存机制 基本数据类型 char(1字节），bool（1字节），short（2字节），int（4字节），long（8字节），float（4字节），double（8字节）
+怎么判断float或者double为0 float32位中，有1位符号位，8位指数位，23位尾数为 double64位中，1位符号位，11位指 …'/>
+<meta name = 'twitter:image' content = 'images/%!s()' />
+<link rel='apple-touch-icon' sizes='180x180' href='https://president810.github.io/Cpp-Interview-Notes/images/icons/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='https://president810.github.io/Cpp-Interview-Notes/images/icons/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='https://president810.github.io/Cpp-Interview-Notes/images/icons/favicon-16x16.png'>
+<link rel='manifest' href='https://president810.github.io/Cpp-Interview-Notes/images/icons/site.webmanifest'>
 
-<link rel="canonical" href="https://president810.github.io/Cpp-Interview-Notes/interview/c&#43;&#43;/">
+  <link rel='canonical' href='https://president810.github.io/Cpp-Interview-Notes/interview/c&#43;&#43;/'>
+  <link rel = 'stylesheet' href = 'https://president810.github.io/Cpp-Interview-Notes/css/styles.42db596b1300421b76166668f896d65a0e912909aa95394f74e207c69da0d0b652fe2ad414cb6b746661857c824297f791d6df38fce0872ba2a9ccaa421a6b89.css' integrity = 'sha512-QttZaxMAQht2FmZo&#43;JbWWg6RKQmqlTlPdOIHxp2g0LZS/irUFMtrdGZhhXyCQpf3kdbfOPzghyuiqcyqQhpriQ=='>
+</head>
 
+  <body><div class = 'nav-drop'>
+  <div class = 'nav-body'>
     
-
-    
-    
-    <link rel="preload" href="https://president810.github.io/Cpp-Interview-Notes/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity = "sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://president810.github.io/Cpp-Interview-Notes/js/bundle.min.f5d8e7a2bd3141099760b9ae2314c632325773607ce2b1867b5a9a729484e5bf2629e8c325dec6fb00f2526e325a45e2620436c05256ed6e5cae00d47a305a00.js" as="script" integrity=
-    "sha512-9djnor0xQQmXYLmuIxTGMjJXc2B84rGGe1qacpSE5b8mKejDJd7G&#43;wDyUm4yWkXiYgQ2wFJW7W5crgDUejBaAA==" crossorigin="anonymous">
-
-    
-    <link rel="stylesheet" type="text/css" href="https://president810.github.io/Cpp-Interview-Notes/css/styles.2b3290fc6e94839826981c23ed76e1831472bd3f8af68332da00b97d9430b56bfb7e9394d5c09aca633c093c621709cdd745eec940be733933ac5d876223de52.css" integrity="sha512-KzKQ/G6Ug5gmmBwj7XbhgxRyvT&#43;K9oMy2gC5fZQwtWv7fpOU1cCaymM8CTxiFwnN10XuyUC&#43;czkzrF2HYiPeUg==" crossorigin="anonymous">
-    
-  </head>
-  
-  
-    
-  
-  <body data-code="100" data-lines="false" id="documentTop">
-
-<header class="nav_header" >
-  <nav class="nav">
-    <a href='https://president810.github.io/Cpp-Interview-Notes/' class="nav_brand nav_item">
-        C&#43;&#43; Interview Notes
-      <div class="nav_close">
-        <div>
-          <svg class="icon">
-  <use xlink:href="#open-menu"></use>
-</svg>
-          <svg class="icon">
-  <use xlink:href="#closeme"></use>
-</svg>
-        </div>
-      </div>
-    </a>
-    <div class='nav_body nav_body_'>
-      
-      
-      
-        
-
-      
-<div class='follow'>
-<div class="color_mode">
-  <input type="checkbox" class="color_choice" id="mode">
-</div>
-
-</div>
-
+    <div class = 'nav-close'></div>
+  </div>
+</div><header class = 'nav' >
+  <nav class = 'nav-menu'>
+    <a href='https://president810.github.io/Cpp-Interview-Notes/' class = 'nav-brand nav_item'>C&#43;&#43; Interview Notes</a>
+    <div class = 'nav_bar-wrap'>
+      <div class = 'nav_bar'></div>
     </div>
   </nav>
 </header>
 
+
     <main>
   
-<div class="grid-inverse wrap content">
-  <article class="post_content">
-    <h1 class="post_title">C&#43;&#43;</h1><div class="post_meta">
-  
-    <svg class="icon">
-  <use xlink:href="#calendar"></use>
-</svg>
-    <span class="post_date">
-      Dec 24, 2020</span>
-</div>
 
-    
-  <div class="post_share">
-    Share on:
-    <a href="https://twitter.com/intent/tweet?text=C%2b%2b&url=https%3a%2f%2fpresident810.github.io%2fCpp-Interview-Notes%2finterview%2fc%2b%2b%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#twitter"></use>
-</svg>
-    </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fpresident810.github.io%2fCpp-Interview-Notes%2finterview%2fc%2b%2b%2f&t=C%2b%2b" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#facebook"></use>
-</svg>
-    </a>
-    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
-      <svg class="icon">
-  <use xlink:href="#linkedin"></use>
-</svg>
-    </a>
-    <a href="https://president810.github.io/Cpp-Interview-Notes/interview/c&#43;&#43;/" title="Copy Link" class="link link_yank">
-      <svg class="icon">
-  <use xlink:href="#copy"></use>
-</svg>
-    </a>
-  </div>
-
-    
-    
-    <h2>Overview</h2>
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#c">C++</a>
-      <ul>
-        <li><a href="#内存机制">内存机制</a></li>
-        <li><a href="#面向对象">面向对象</a></li>
-        <li><a href="#stl">STL</a></li>
-        <li><a href="#多线程">多线程</a></li>
-        <li><a href="#c关键字">C++关键字</a></li>
-        <li><a href="#设计模式">设计模式</a></li>
-        <li><a href="#c11">C++11</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-    <h2 id="c">C++</h2>
+<section class = 'post_header' style = 'background-image:url(https://president810.github.io/Cpp-Interview-Notes/images/thumbnail.svg);'>
+  <h1 class='post_title'>C&#43;&#43;</h1>
+</section>
+<div class = 'post'>
+  <article class='post_content'><h2 id="c">C++</h2>
 <h3 id="内存机制">内存机制</h3>
 <h4 id="基本数据类型">基本数据类型</h4>
 <p>char(1字节），bool（1字节），short（2字节），int（4字节），long（8字节），float（4字节），double（8字节）</p>
@@ -162,7 +77,7 @@
 </ol>
 <h4 id="c内存管理">C++内存管理</h4>
 <p>BSS段（未初始化数据区）：通常用来存放程序中未初始化的全局变量和静态变量的一块内存区域。BSS段属于静态分配，程序结束后静态变量资源由系统自动释放。</p>
-<p><img src="/image-20201108193834991.png" alt="image-20201108193834991"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201108193834991.png" alt="image-20201108193834991"></p>
 <p>DATA段：存放程序中已初始化的全局变量的一块内存区域。数据段也属于静态内存分配。数据段包含经过初始化的全局变量以及它们的值。DATA段又可分为读写（RW）区域和只读（RO）区域。RO段保存常量；RW段则是普通非常量全局变量，静态变量就在其中</p>
 <p>TEXT段：存放程序执行代码的一块内存区域。这部分区域的大小在程序运行前就已经确定，并且内存区域属于只读。在代码段中，也有可能包含一些只读的常数变量</p>
 <p>可执行程序在运行时又多出两个区域：栈区和堆区。</p>
@@ -171,7 +86,7 @@
 <h4 id="给函数传入一个指针参数可以用这个指针申请内存吗">给函数传入一个指针参数，可以用这个指针申请内存吗</h4>
 <p>不行，传入的指针实际上是一个副本，虽然函数中这个指针和函数外的指针指向的地址相同，但它们是两个指针；当用malloc分配内存时函数内指针指向的地址发生改变，但是却不会影响函数外原来指针指向的地址，当函数结束时函数内的临时参数指针副本会被销毁，导致这块内存无法被找到</p>
 <p>正确的做法是传入指向这个指针的指针来改变这个指针的指向地址，或者让函数直接返回指向新地址的指针</p>
-<p><img src="/image-20201108182314860.png" alt="image-20201108182314860"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201108182314860.png" alt="image-20201108182314860"></p>
 <h4 id="指针--数组区别">指针 / 数组区别</h4>
 <p>（除了字符串情况之外）如果要在声明的同时进行初始化，指针需要用new的方式初始化，而数组要用{}的方式初始化</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
@@ -211,7 +126,7 @@ str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Shit&#
 <p>栈：由系统自动分配，速度较快，程序员是无法控制的</p>
 <h4 id="没有构造对象时能访问成员函数吗">没有构造对象时能访问成员函数吗</h4>
 <p>原来编译器找成员函数位置是根据声明类型找的么。。。声明时就已经知道了这个对象的类型，所以即使这个对象实际上只是一个空指针，编译器也能找到成员函数的位置并执行；但虚函数的话是运行期才知道函数指针是哪个（虚函数表）不能仅凭声明类型知道成员函数是哪个，所以会异常</p>
-<p><img src="/image-20201030220828266.png" alt="image-20201030220828266"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201030220828266.png" alt="image-20201030220828266"></p>
 <h4 id="引用和指针的区别">引用和指针的区别</h4>
 <p>指针指向对象地址，引用可以看作对象的一个别名</p>
 <p>int n = 5; 指针：int *ptr = &amp;n; 引用：int &amp;ref = n;</p>
@@ -404,11 +319,11 @@ GCC 则是</p>
 <p>如果函数库的一份拷贝是可执行文件的物理组成部分，称之为静态链接。静态链接当链接程序时，需要使用的每个库函数的一份拷贝被加入到可执行文件中。静态链接使用静态库进行链接，生成的程序包含程序运行所需要的全部库，可以直接运行，不过静态链接生成的程序体积较大（即使是在静态链接中，整个库文件也并没有全部装入到可执行文件中，所装入的只是需要的函数）。</p>
 <p>如果可执行文件只是包含了文件名，让载入器在运行时能够寻找程序所需要的函数库，称之为动态链接。动态链接允许系统提供一个庞大的函数库集合，可以提供许多有用的服务，程序在运行时寻找它们。动态链接使用动态链接库进行链接，外部函数被真正调用之前，运行时载入器并不解析它们。所以动态链接即使链接了函数库，如果没有实际调用，也不会带来额外开销。动态链接生成的程序体积较小，但是必须依赖所需的动态库，否则无法执行。</p>
 <h4 id="怎么在main函数之前和之后执行代码">怎么在main函数之前和之后执行代码</h4>
-<p><img src="/image-20201031133827730.png" alt="image-20201031133827730"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201031133827730.png" alt="image-20201031133827730"></p>
 <p>全局变量会在main函数执行之前进行初始化，可以利用这一点在main之前执行代码
 atexit函数可以注册一个在main函数结束后要调用的函数，atexit注册的函数结束后程序才会真正exit；atexit可以在程序的任意位置调用</p>
 <p>或者通过在全局变量对象的析构函数也能实现在main之后运行函数（main结束后会释放全局变量的内存）</p>
-<p><img src="/image-20201109141055379.png" alt="image-20201109141055379"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201109141055379.png" alt="image-20201109141055379"></p>
 <h4 id="被free回收的内存是立即返还给操作系统吗为什么">被free回收的内存是立即返还给操作系统吗？为什么</h4>
 <p>不是的，被free回收的内存会首先被ptmalloc使用双链表保存起来，当用户下一次申请内存的时候，会尝试从这些内存中寻找合适的返回。这样就避免了频繁的系统调用，占用过多的系统资源。同时ptmalloc也会尝试对小块内存进行合并，避免过多的内存碎片。</p>
 <h4 id="malloc原理">malloc原理</h4>
@@ -475,15 +390,15 @@ atexit函数可以注册一个在main函数结束后要调用的函数，atexit�
 <p>class可以用作模板，而struct不能</p>
 <h4 id="构造函数使用初始化列表和函数中赋值的区别">构造函数使用初始化列表和函数中赋值的区别</h4>
 <p>注意：Test2构造函数中的参数t1为引用，这样能少一次拷贝行为，如果不是引用而是普通变量的话会把实参拷贝一份再传入构造函数</p>
-<p><img src="/image-20201017211432878.png" alt="image-20201017211432878"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201017211432878.png" alt="image-20201017211432878"></p>
 <p>如果赋值的话，Test2会先新建一个Test1对象test1，然后通过赋值运算符把参数t1的值复制过去</p>
-<p><img src="/image-20201017211523694.png" alt="image-20201017211523694"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201017211523694.png" alt="image-20201017211523694"></p>
 <p>如果直接初始化列表的话，Test2会直接拷贝一个Test1并设置为自己的成员变量</p>
 <h4 id="继承">继承</h4>
 <p><strong>公有</strong>成员在程序中类的外部是可访问的。您可以不使用任何成员函数来设置和获取公有变量的值</p>
 <p>私有成员变量或函数在类的外部是不可访问的，只有类和友元函数可以访问私有成员</p>
 <p>保护成员变量或函数与私有成员十分相似，但有一点不同，保护成员在派生类（即子类）中是可访问的</p>
-<p><img src="/image-20200903202336092.png" alt="image-20200903202336092"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200903202336092.png" alt="image-20200903202336092"></p>
 <h4 id="虚函数的目的实现">虚函数的目的，实现</h4>
 <p>虚函数是一种实现多态的机制：父类型的指针指向其子类的实例，然后通过父类的指针调用实际子类的成员函数</p>
 <p>在有虚函数的类中，类的最开始部分是一个虚函数表的指针，这个指针指向一个虚函数表，表中放了虚函数的地址，实际的虚函数在代码段中。当子类继承了父类的时候也会继承其虚函数表，当子类重写父类中虚函数时候，会将其继承到的虚函数表中的地址替换为重新写的函数地址。使用了虚函数，会增加访问内存开销，降低效率</p>
@@ -571,11 +486,11 @@ atexit函数可以注册一个在main函数结束后要调用的函数，atexit�
 }
 </code></pre></div><h4 id="子类重写了父类虚方法之后可以调用父类的这个虚方法吗">子类重写了父类虚方法之后，可以调用父类的这个虚方法吗</h4>
 <p>还真他妈可以。。。</p>
-<p><img src="/image-20201031183154055.png" alt="image-20201031183154055"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201031183154055.png" alt="image-20201031183154055"></p>
 <h4 id="虚函数virtual可以是内联函数inline吗">虚函数（virtual）可以是内联函数（inline）吗？</h4>
 <p>内联是在编译器建议编译器内联，而虚函数的多态性在运行期，编译器无法知道运行期调用哪个代码，因此虚函数表现为多态性时（运行期）不可以内联。</p>
 <h4 id="为什么对于存在虚函数的类中析构函数要定义成虚函数"><strong>为什么对于存在虚函数的类中析构函数要定义成虚函数</strong></h4>
-<p><img src="/image-20200903205957863.png" alt="image-20200903205957863"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200903205957863.png" alt="image-20200903205957863"></p>
 <p>（声明为基类指针的子类对象，delete时只调用基类的析构函数，不调用子类析构函数）</p>
 <p>为了实现多态进行动态绑定，将派生类对象指针绑定到基类指针上，对象销毁时，如果析构函数没有定义为虚函数，则会调用基类的析构函数，显然只能销毁部分数据。如果要调用对象的析构函数，就需要将该对象的析构函数定义为虚函数，销毁时通过虚函数表找到对应的析构函数。</p>
 <h4 id="static函数为什么不能是虚函数">static函数为什么不能是虚函数</h4>
@@ -594,7 +509,7 @@ atexit函数可以注册一个在main函数结束后要调用的函数，atexit�
 <li>拷贝构造函数是在发生对象复制的时候调用的，例如以调用函数时以对象形式传入参数，或者调用=赋值运算符时</li>
 <li>移动构造函数见右值引用部分</li>
 </ul>
-<p><img src="/image-20200903235617154.png" alt="image-20200903235617154"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200903235617154.png" alt="image-20200903235617154"></p>
 <h4 id="为什么拷贝构造函数参数需要是引用">为什么拷贝构造函数参数需要是引用</h4>
 <p>不是引用的话调用拷贝构造函数本身就需要复制参数，要复制参数就需要调拷贝构造函数，尼玛没完了</p>
 <h4 id="拷贝构造函数参数必须是const吗">拷贝构造函数参数必须是const吗</h4>
@@ -607,12 +522,12 @@ atexit函数可以注册一个在main函数结束后要调用的函数，atexit�
 <h4 id="什么时候需要自定义拷贝构造函数">什么时候需要自定义拷贝构造函数</h4>
 <p>默认的拷贝构造函数是把原对象的二进制内容以bitwise的形式拷贝到新的对象里，有些时候光是拷贝二进制无法满足用户对拷贝构造函数的要求，此时就需要自定义拷贝构造函数</p>
 <p>例如初始化时给了对象Anew了一个指向B对象指针的情况，此时如果把二进制内容直接复制过去会导致原对象和拷贝的对象的指针都指向同样的B对象，而用户可能想两个对象指向不同的B对象，此时就得自定义拷贝构造函数</p>
-<p><img src="/image-20201030220244448.png" alt="image-20201030220244448"></p>
-<p><img src="/image-20201030220253390.png" alt="image-20201030220253390"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201030220244448.png" alt="image-20201030220244448"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201030220253390.png" alt="image-20201030220253390"></p>
 <h4 id="析构函数能抛出异常吗"><strong>析构函数能抛出异常吗</strong></h4>
 <p>通常异常发生时，c++的机制会调用已经构造对象的析构函数来释放资源，此时若析构函数本身也抛出异常，则前一个异常尚未处理，又有新的异常，会造成程序崩溃的问题。</p>
 <h4 id="模版">模版</h4>
-<p><img src="/image-20200904153017442.png" alt="image-20200904153017442"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200904153017442.png" alt="image-20200904153017442"></p>
 <p>在<strong>编译器进行编译的时候</strong>，编译器会产生类的模板函数的声明，当时实际确认类型后调用的时候，会根据调用的类型进行再次帮我们生成对应类型的函数声明和定义。我们称之为二次编译</p>
 <h4 id="为什么模板成员函数不能是虚函数">为什么模板成员函数不能是虚函数</h4>
 <p>当前的编译器都期望在处理类的定义的时候就能确定这个类的虚函数表的大小，如果允许有类的虚成员模板函数，那么就必须要求编译器提前知道程序中所有对该类的该虚成员模板函数的调用，而这是不可行的。</p>
@@ -661,7 +576,7 @@ dynamic_cast如果不能转换返回NULL。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">int</span> n<span style="color:#f92672">=</span><span style="color:#ae81ff">9</span>; 
 <span style="color:#66d9ef">double</span> d<span style="color:#f92672">=</span><span style="color:#66d9ef">reinterpret_cast</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span> <span style="color:#f92672">&amp;</span> <span style="color:#f92672">&gt;</span> (n);
 </code></pre></div><p>在进行计算以后, d 包含无用值. 这是因为 reinterpret_cast 仅仅是复制 n 的比特位到 d, 没有进行必要的分析</p>
-<p><img src="/image-20200904232256093.png" alt="image-20200904232256093"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200904232256093.png" alt="image-20200904232256093"></p>
 <h3 id="stl">STL</h3>
 <table>
 <thead>
@@ -817,11 +732,11 @@ dynamic_cast如果不能转换返回NULL。</p>
 <p>push_back（只从屁股插入一个数据 ）一般按两倍来扩容</p>
 <p>insert（从迭代器位置插入数据，可插入多个）触发扩容时，如果要插入的数据量比旧容量小，则按两倍扩容；如果要插入的数据量比原来的旧容量还要大，即表示即使按两倍扩容了，依然存不下要插入的数据，此时将会按照旧容量加要插入的数据量来扩容，保证一次扩容就能容下要插入的数据</p>
 <p><strong>记住扩容后vector还得把原来的元素一个一个复制到新地址</strong></p>
-<p><img src="/image-20201101154950990.png" alt="image-20201101154950990"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201101154950990.png" alt="image-20201101154950990"></p>
 <h4 id="vector中reserve和resize的区别">vector中reserve和resize的区别</h4>
 <p>reserve会对vector的capacity进行调整，但是size不会变，扩充的内存并没有初始化，直接用[]访问可能会出错</p>
 <p>resize即调整capacity也调整size，并且会往里填充对应类型的对象（resize传入第二个参数val时会把多出来的空间都用val填充，没传入的话就填入默认初始化的对象）</p>
-<p><img src="/image-20201101142954449.png" alt="image-20201101142954449"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201101142954449.png" alt="image-20201101142954449"></p>
 <h4 id="vector的元素类型可以是引用吗">vector的元素类型可以是引用吗？</h4>
 <p>vector的底层实现要求连续的对象排列，引用并非对象，没有实际地址，因此vector的元素类型不能是引用</p>
 <h4 id="vector迭代器失效的情况">vector迭代器失效的情况</h4>
@@ -863,7 +778,7 @@ dynamic_cast如果不能转换返回NULL。</p>
 </ul>
 <p>和 vector 容器采用连续的线性空间不同，deque 容器存储数据的空间是由一段一段等长的连续空间构成，各段空间之间并不一定是连续的，可以位于在内存的不同区域。</p>
 <p>为了管理这些连续空间，deque 容器用数组（数组名假设为 map）存储着各个连续空间的首地址。也就是说，map 数组中存储的都是<a href="http://c.biancheng.net/c/80/">指针</a>，指向那些真正用来存储数据的各个连续空间</p>
-<p><img src="/image-20201106153453485.png" alt="image-20201106153453485"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201106153453485.png" alt="image-20201106153453485"></p>
 <p>通过建立 map 数组，deque 容器申请的这些分段的连续空间就能实现“整体连续”的效果。换句话说，当 deque 容器需要在头部或尾部增加存储空间时，它会申请一段新的连续空间，同时在 map 数组的开头或结尾添加指向该空间的指针，由此该空间就串接到了 deque 容器的头部或尾部。</p>
 <h4 id="stack--queue底层原理">stack / queue底层原理</h4>
 <p>STL的stack和queue就是deque/list封装了一下</p>
@@ -891,8 +806,8 @@ dynamic_cast如果不能转换返回NULL。</p>
 <h4 id="stl中的sort算法是用什么实现的stable_sort呢">STL中的sort()算法是用什么实现的，stable_sort()呢</h4>
 <p>STL中的sort()在数据量大时，采用快排quicksort，分段递归；一旦分段后的数量小于某个门限值，改用插入排序Insertion sort，避免quicksort深度递归带来的过大的额外负担，如果递归层次过深，还会改用heapsort(堆排序)，stable_sort()是归并排序。</p>
 <h4 id="push和emplace区别">push和emplace区别</h4>
-<p><img src="/image-20201101170718643.png" alt="image-20201101170718643"></p>
-<p><img src="/image-20201101170829017.png" alt="image-20201101170829017"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201101170718643.png" alt="image-20201101170718643"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201101170829017.png" alt="image-20201101170829017"></p>
 <p>emplace会把一个右值直接move过去，而不是像push一样复制过去
 Note：如果是emplace<!-- raw HTML omitted -->({})的话效果一样，也是先调用构造函数再move过去</p>
 <h3 id="多线程">多线程</h3>
@@ -917,7 +832,7 @@ Note：如果是emplace<!-- raw HTML omitted -->({})的话效果一样，也是�
 </ol>
 <p>不能改变这个作为参数的指针指向的对象</p>
 <h4 id="const成员变量必须在构造函数中通过-member-的方式初始化">const成员变量必须在构造函数中通过 :member() 的方式初始化</h4>
-<p><img src="/image-20201017213447679.png" alt="image-20201017213447679"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201017213447679.png" alt="image-20201017213447679"></p>
 <p>注意用const修饰成员变量时必须要在构造函数中用初始化列表的方式初始化（声明时初始化也行，但这样会导致所以这个类的实例中这个成员变量的值都一样并且无法改变）</p>
 <p>原因很简单，因为这个成员变量是const，所以不能用赋值的方式（=）给常量赋值，而初始化列表的方式不会涉及赋值只会将传入参数拷贝一份给const成员变量（例子见下）</p>
 <h4 id="define和const的联系与区别">define和const的联系与区别</h4>
@@ -926,7 +841,7 @@ Note：如果是emplace<!-- raw HTML omitted -->({})的话效果一样，也是�
 <p>define不会进行类型安全检查，而const会进行类型安全检查，安全性更高。</p>
 <p>const可以定义函数而define不可以。</p>
 <h4 id="extern关键字">extern关键字</h4>
-<p><img src="/image-20200919135311891.png" alt="image-20200919135311891"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919135311891.png" alt="image-20200919135311891"></p>
 <p>由于没有#include &ldquo;func.h&rdquo;，必须用extern表示变量/函数在main.c之外的文件中声明过</p>
 <p>extern表示变量/函数在其它文件中声明过了</p>
 <h4 id="static关键字">static关键字</h4>
@@ -936,9 +851,9 @@ Note：如果是emplace<!-- raw HTML omitted -->({})的话效果一样，也是�
 <p>静态成员变量是该类的所有对象所共有的。对于普通成员变量，每个类对象都有自己的一份拷贝。而静态成员变量一共就一份，无论这个类的对象被定义了多少个，静态成员变量只分配一次内存，由该类的所有对象共享访问。</p>
 <p>因为静态数据成员在全局数据区分配内存，由本类的所有对象共享，所以，它不属于特定的类对象，不占用对象的内存，而是在所有对象之外开辟内存，在没有产生类对象时其作用域就可见。因此，在没有类的实例存在时，静态成员变量就已经存在，我们就可以操作它；</p>
 <p>静态成员变量存储在全局数据区。static 成员变量的内存空间既不是在声明类时分配，也不是在创建对象时分配，而是在初始化时分配。静态成员变量必须初始化，而且只能在类体外进行（并且声明时要加static成员变量类型）</p>
-<p><img src="/image-20201017210647896.png" alt="image-20201017210647896"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201017210647896.png" alt="image-20201017210647896"></p>
 <p><strong>但static const或const static需要在类体内声明时初始化</strong>，在构造函数中或类外初始化都会报错</p>
-<p><img src="/image-20201017205019584.png" alt="image-20201017205019584"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201017205019584.png" alt="image-20201017205019584"></p>
 <p>类的静态成员变量访问形式1：＜类对象名＞.＜静态数据成员名＞ ；类的静态成员变量访问形式2：＜类类型名＞::＜静态数据成员名＞，也即，静态成员不需要通过对象就能访问。</p>
 <p>静态数据成员和普通数据成员一样遵从public,protected,private访问规则；</p>
 <p>sizeof 运算符不会计算静态成员变量</p>
@@ -969,13 +884,13 @@ Note：如果是emplace<!-- raw HTML omitted -->({})的话效果一样，也是�
 <li>静态函数</li>
 </ol>
 <p>在函数的返回类型前加上static关键字,函数即被定义为静态函数。静态函数与普通函数不同，它只能在声明它的文件当中可见，不能被其它文件使用。</p>
-<p><img src="/image-20201112143939468.png" alt="image-20201112143939468"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201112143939468.png" alt="image-20201112143939468"></p>
 <p>静态全局/成员变量在main开始前初始化，main结束后销毁</p>
 <p>静态局部变量在运行到定义的那一行时初始化，main结束后销毁</p>
 <h4 id="为什么静态方法不能调用非静态变量">为什么静态方法不能调用非静态变量</h4>
 <p>静态方法被调用时如果要调用非静态变量就需要对象先被生成，但静态方法却可以在没生成对象时被调用，此时访问成员变量肯定会出错，所以不可以</p>
 <h4 id="volatile关键字">volatile关键字</h4>
-<p><img src="/image-20200904225321320.png" alt="image-20200904225321320"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200904225321320.png" alt="image-20200904225321320"></p>
 <p>例如多线程并发访问共享变量时，一个线程改变了变量的值，怎样让改变后的值对其它线程 visible。一般说来，volatile用在如下的几个地方：</p>
 <h4 id="explict关键字">explict关键字</h4>
 <p><code>explicit</code>的作用是用来声明类构造函数是显示调用的，而非隐式调用，所以只用于修饰单参构造函数。因为无参构造函数和多参构造函数本身就是显示调用的。再加上<code>explicit</code>关键字也没有什么意义。</p>
@@ -1253,19 +1168,19 @@ Note：如果是emplace<!-- raw HTML omitted -->({})的话效果一样，也是�
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 </code></pre></div><h4 id="变长参数模板-c11">变长参数模板 (C++11)</h4>
-<p><img src="/image-20200919152853236.png" alt="image-20200919152853236"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919152853236.png" alt="image-20200919152853236"></p>
 <h4 id="委托构造--继承构造-c11">委托构造 &amp; 继承构造 (C++11)</h4>
-<p><img src="/image-20200919155139599.png" alt="image-20200919155139599"></p>
-<p><img src="/image-20200919155147809.png" alt="image-20200919155147809"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919155139599.png" alt="image-20200919155139599"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919155147809.png" alt="image-20200919155147809"></p>
 <h4 id="override--final关键字-c11">override &amp; final关键字 (C++11)</h4>
-<p><img src="/image-20200919155841816.png" alt="image-20200919155841816"></p>
-<p><img src="/image-20200919155812072.png" alt="image-20200919155812072"></p>
-<p><img src="/image-20200919155820570.png" alt="image-20200919155820570"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919155841816.png" alt="image-20200919155841816"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919155812072.png" alt="image-20200919155812072"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919155820570.png" alt="image-20200919155820570"></p>
 <h4 id="using关键字-c11">using关键字 (C++11)</h4>
-<p><img src="/image-20200919165948292.png" alt="image-20200919165948292"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919165948292.png" alt="image-20200919165948292"></p>
 <h4 id="强枚举类型-c11">强枚举类型 (C++11)</h4>
 <p>在传统 C++中，枚举类型并非类型安全，枚举类型会被视作整数，则会让两种完全不同的枚举类型可以进行直接的比较（虽然编译器给出了检查，但并非所有），<strong>甚至枚举类型的枚举值名字不能相同</strong>，这不是我们希望看到的结果。</p>
-<p><img src="/image-20200919174448465.png" alt="image-20200919174448465"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919174448465.png" alt="image-20200919174448465"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Side</span>{ Right, Left };
 <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Thing</span>{ Wrong, Right }; <span style="color:#75715e">// error: redefinition of enumerator &#39;Right&#39;
 </span></code></pre></div><p>C++11 引入了枚举类（enumaration class），并使用 <code>enum class</code> 的语法进行声明：</p>
@@ -1280,7 +1195,7 @@ Note：如果是emplace<!-- raw HTML omitted -->({})的话效果一样，也是�
     <span style="color:#75715e">// 会输出
 </span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;new_enum::value3 == new_enum::value4&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
-</code></pre></div><p><img src="/image-20200919181720830.png" alt="image-20200919181720830"></p>
+</code></pre></div><p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919181720830.png" alt="image-20200919181720830"></p>
 <h4 id="lambda-c11">lambda (C++11)</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
@@ -1303,11 +1218,11 @@ Note：如果是emplace<!-- raw HTML omitted -->({})的话效果一样，也是�
 <li>引用捕获：与引用传参类似，引用捕获保存的是引用，值会发生变化。</li>
 <li>隐式捕获：手动书写捕获列表有时候是非常复杂的，这种机械性的工作可以交给编译器来处理，这时候可以在捕获列表中写一个 <code>&amp;</code> 或 <code>=</code> 向编译器声明采用 引用捕获或者值捕获.</li>
 </ul>
-<p><img src="/image-20200919183447898.png" alt="image-20200919183447898"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919183447898.png" alt="image-20200919183447898"></p>
 <ul>
 <li>泛型 Lambda：<code>auto</code> 关键字不能够用在参数表里，这是因为这样的写法会与模板的功能产生冲突。但是 Lambda 表达式并不是普通函数，所以 Lambda 表达式并不能够模板化。这就为我们造成了一定程度上的麻烦：参数表不能够泛化，必须明确参数表类型；幸运的是，从 C++14 开始，Lambda 函数的形式参数可以使用 <code>auto</code> 关键字来产生意义上的泛型</li>
 </ul>
-<p><img src="/image-20200919183724921.png" alt="image-20200919183724921"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919183724921.png" alt="image-20200919183724921"></p>
 <h4 id="右值引用-c11">右值引用 (C++11)</h4>
 <p><strong>左值(lvalue, left value)</strong>，顾名思义就是赋值符号左边的值。准确来说，左值是表达式（不一定是赋值表达式）后依然存在的持久对象。</p>
 <p><strong>右值(rvalue, right value)</strong>，右边的值，是指表达式结束后就不再存在的临时对象。</p>
@@ -1334,7 +1249,7 @@ std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</
 <li>移动语义</li>
 </ul>
 <p>传统 C++ 通过拷贝构造函数和赋值操作符为类对象设计了拷贝/复制的概念，但为了实现对资源的移动操作，调用者必须使用先复制、再析构的方式，否则就需要自己实现移动对象的接口。试想，搬家的时候是把家里的东西直接搬到新家去，而不是将所有东西复制一份（重买）再放到新家、再把原来的东西全部扔掉（销毁），这是非常反人类的一件事情。</p>
-<p><img src="/image-20200919223530282.png" alt="image-20200919223530282"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919223530282.png" alt="image-20200919223530282"></p>
 <p>在上面的代码中：</p>
 <ol>
 <li>首先会在 <code>return_rvalue</code> 内部构造两个 <code>A</code> 对象，于是获得两个构造函数的输出；</li>
@@ -1343,8 +1258,8 @@ std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</
 <p>从而避免了无意义的拷贝构造，加强了性能</p>
 <p>下面这个例子直观一点：</p>
 <p>当有移动构造函数时将亡值会以移动的方式从被调用函数返回结果传回给main；没有移动构造函数时只能复制一遍（消耗较大）</p>
-<p><img src="/image-20200920094036279.png" alt="image-20200920094036279"></p>
-<p><img src="/image-20200920094052465.png" alt="image-20200920094052465"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200920094036279.png" alt="image-20200920094036279"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200920094052465.png" alt="image-20200920094052465"></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt; // std::cout</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;utility&gt;  // std::move</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;   // std::vector</span><span style="color:#75715e">
@@ -1366,18 +1281,18 @@ std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 </code></pre></div><p>要调用参数为右值的移动函数，就必须传右值进去；此时传右值仅仅表示要去找参数为右值的对应函数，具体怎么通过移动减少拷贝开销要看这个函数怎么实现</p>
-<p><img src="/image-20201108200529546.png" alt="image-20201108200529546"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201108200529546.png" alt="image-20201108200529546"></p>
 <ul>
 <li>完美转发</li>
 </ul>
 <p>前面我们提到了，一个声明的右值引用其实是一个左值。这就为我们进行参数转发（传递）造成了问题：</p>
-<p><img src="/image-20200919211536459.png" alt="image-20200919211536459"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919211536459.png" alt="image-20200919211536459"></p>
 <p>对于 <code>pass(1)</code> 来说，虽然传递的是右值，但由于 <code>v</code> 是一个引用，所以同时也是左值。因此 <code>reference(v)</code> 会调用 <code>reference(int&amp;)</code>，输出『左值』。而对于<code>pass(v)</code>而言，<code>v</code>是一个左值，为什么会成功传递给 <code>pass(T&amp;&amp;)</code> 呢？</p>
 <p>这是基于<strong>引用坍缩规则</strong>的：在传统 C++ 中，我们不能够对一个引用类型继续进行引用，但 C++ 由于右值引用的出现而放宽了这一做法，从而产生了引用坍缩规则，允许我们对引用进行引用，既能左引用，又能右引用。但是却遵循如下规则</p>
-<p><img src="/image-20200919211550732.png" alt="image-20200919211550732"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919211550732.png" alt="image-20200919211550732"></p>
 <p>因此，模板函数中使用 <code>T&amp;&amp;</code> 不一定能进行右值引用，当传入左值时，此函数的引用将被推导为左值。更准确的讲，<strong>无论模板参数是什么类型的引用，当且仅当实参类型为右引用时，模板参数才能被推导为右引用类型</strong>。这才使得 <code>v</code> 作为左值的成功传递。</p>
 <p>完美转发就是基于上述规律产生的。所谓完美转发，就是为了让我们在传递参数的时候，保持原来的参数类型（左引用保持左引用，右引用保持右引用）。为了解决这个问题，我们应该使用 <code>std::forward</code> 来进行参数的转发（传递）：</p>
-<p><img src="/image-20200919211456940.png" alt="image-20200919211456940"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200919211456940.png" alt="image-20200919211456940"></p>
 <p>普通传参一定传左值，move一定转换为右值，forward保持原来性质</p>
 <h4 id="unordered_map--unordered_set-c11">unordered_map &amp; unordered_set (C++11)</h4>
 <p>我们已经熟知了传统 C++ 中的有序容器 <code>std::map</code>/<code>std::set</code>，这些元素内部通过红黑树进行实现，插入和搜索的平均复杂度均为 <code>O(log(size))</code>。在插入元素时候，会根据 <code>&lt;</code> 操作符比较元素大小并判断元素是否相同，并选择合适的位置插入到容器中。当对这个容器中的元素进行遍历时，输出结果会按照 <code>&lt;</code> 操作符的顺序来逐个遍历。</p>
@@ -1391,9 +1306,9 @@ std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</
 <p>利用引用计数-&gt;每有一个指针指向相同的一片内存时，引用计数+1，每当一个指针取消指向一片内存时，引用计数-1，减为0时释放内存。</p>
 <p>但还不够，因为使用 <code>std::shared_ptr</code> 仍然需要使用 <code>new</code> 来调用，这使得代码出现了某种程度上的不对称。</p>
 <p><code>std::make_shared</code> 就能够用来消除显示的使用 <code>new</code>，所以<code>std::make_shared</code> 会分配创建传入参数中的对象，并返回这个对象类型的<code>std::shared_ptr</code>指针。&lt;&gt;中填入类名，()中填入初始化用的参数，例如：</p>
-<p><img src="/image-20200920003545194.png" alt=""></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200920003545194.png" alt=""></p>
 <p><code>std::shared_ptr</code> 可以通过 <code>get()</code> 方法来获取原始指针，通过 <code>reset()</code> 来减少一个引用计数，并通过<code>get_count()</code>来查看一个对象的引用计数，<code>unique()</code>: 判断是否是唯一指向当前内存的shared_ptr.。例如：</p>
-<p><img src="/image-20200920005708179.png" alt="image-20200920005708179"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200920005708179.png" alt="image-20200920005708179"></p>
 <ul>
 <li>
 <p><strong>unique_ptr</strong></p>
@@ -1403,110 +1318,91 @@ std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> pointer <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>make_unique<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(<span style="color:#ae81ff">10</span>);   <span style="color:#75715e">// make_unique 从 C++14 引入
 </span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> pointer2 <span style="color:#f92672">=</span> pointer;    <span style="color:#75715e">// 非法
-</span></code></pre></div><p><img src="/image-20200920004258513.png" alt="image-20200920004258513"></p>
+</span></code></pre></div><p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200920004258513.png" alt="image-20200920004258513"></p>
 <p>既然是独占，换句话说就是不可复制。但是，我们可以利用 <code>std::move</code> 将其转移给其他的 <code>unique_ptr</code>（或者用unique_ptr的swap方法也可以），例如</p>
-<p><img src="/image-20200920005310162.png" alt="image-20200920005310162"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200920005310162.png" alt="image-20200920005310162"></p>
 <ul>
 <li>weak_ptr</li>
 </ul>
 <p>如果你仔细思考 <code>std::shared_ptr</code> 就会发现依然存在着资源无法释放的问题。看下面这个例子（循环引用）：</p>
-<p><img src="/image-20201031143530136.png" alt="image-20201031143530136"></p>
-<p><img src="/image-20200920004850088.png" alt="image-20200920004850088"></p>
-<p><img src="/image-20200920004905179.png" alt="image-20200920004905179"></p>
-<p><img src="/image-20201031143503235.png" alt="image-20201031143503235"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201031143530136.png" alt="image-20201031143530136"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200920004850088.png" alt="image-20200920004850088"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20200920004905179.png" alt="image-20200920004905179"></p>
+<p><img src="https://president810.github.io/Cpp-Interview-Notes/images/image-20201031143503235.png" alt="image-20201031143503235"></p>
 <p><code>std::weak_ptr</code> 没有 <code>*</code> 运算符和 <code>-&gt;</code> 运算符，所以不能够对资源进行操作，它的唯一作用就是用于检查 <code>std::shared_ptr</code> 是否存在，<code>expired()</code> 方法在资源未被释放时，会返回 <code>true</code>，否则返回 <code>false</code>；<code>lock()</code>方法用来获取weak_ptr指向对象的shared_ptr</p>
 
     
-      
+    <div class = 'post_extra'><div class = 'copy' data-share = 'Copy' data-copied = 'Copied'><svg>
+  <use xlink:href="#copy"></use>
+</svg>
+</div>
+
+    </div>
+
     
   </article>
-<aside class="sidebar">
-  <section class="sidebar_inner">
-    
-    <h2 class="mt-4">Recent Posts</h2>
-    <ul class="flex-column">
-      <li>
-        <a href="https://president810.github.io/Cpp-Interview-Notes/interview/operatingsystem/" class="nav-link">Operating System</a>
-      </li>
-      <li>
-        <a href="https://president810.github.io/Cpp-Interview-Notes/interview/datastructure/" class="nav-link">Data Structure</a>
-      </li>
-      <li>
-        <a href="https://president810.github.io/Cpp-Interview-Notes/interview/database/" class="nav-link">Database</a>
-      </li>
-      <li>
-        <a href="https://president810.github.io/Cpp-Interview-Notes/interview/computernetwork/" class="nav-link">Computer Network</a>
-      </li>
-    </ul>
-  </section>
-</aside>
-
+  
+  <aside><h3>More from C&#43;&#43; Interview Notes</h3>
+<ul class='posts aside'>
+<li class = 'post_item fp'>
+  <a class = 'post_card' href='https://president810.github.io/Cpp-Interview-Notes/interview/operatingsystem/' title = 'Operating System' style = 'background-image: url(https://president810.github.io/Cpp-Interview-Notes/images/thumbnail.svg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Copy' data-copied = 'Copied'><svg>
+  <use xlink:href="#copy"></use>
+</svg>
 </div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://president810.github.io/Cpp-Interview-Notes/interview/operatingsystem/'>Operating System</a>
+    </h3>
+    <p class = 'pale'>操作系统 Linux 用户态到内核态的切换  系统调用  这是用户态进程主动要求切换到内核态的一种方式，**用户态进程通过系统调用申请使用操作系统提供的服务程序完成工作。**比如前 …</p>
+  </div>
+</li>
+
+<li class = 'post_item fp'>
+  <a class = 'post_card' href='https://president810.github.io/Cpp-Interview-Notes/interview/datastructure/' title = 'Data Structure' style = 'background-image: url(https://president810.github.io/Cpp-Interview-Notes/images/thumbnail.svg);'>
+  </a>
+  <div class = 'excerpt'>
+    <div class = 'excerpt_meta'><div class = 'copy' data-share = 'Copy' data-copied = 'Copied'><svg>
+  <use xlink:href="#copy"></use>
+</svg>
+</div>
+
+    </div>
+    <h3 class = 'post_link'>
+      <a href='https://president810.github.io/Cpp-Interview-Notes/interview/datastructure/'>Data Structure</a>
+    </h3>
+    <p class = 'pale'>数据结构 哈希表 基本思想：首先在元素的关键字K和元素的位置P之间建立一个对应关系f，使得P=f(K),其中f成为哈希函数。创建哈希表时，把关键字K的元素直接存入地址为f(K)的单 …</p>
+  </div>
+</li>
+
+</ul>
+
+  </aside>
+  
+</div>
+<script src = 'https://president810.github.io/Cpp-Interview-Notes/js/autosize.min.js'></script>
+<script src = 'https://president810.github.io/Cpp-Interview-Notes/js/timeago.js'></script>
     </main><svg width="0" height="0" class="hidden">
-  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
-    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  <symbol viewBox="0 0 699.428 699.428" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835s9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"
+    ></path>
   </symbol>
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
-    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
-      ></path>
+  <symbol viewBox="0 0 60.015 60.015" xmlns="http://www.w3.org/2000/svg" id="reply">
+    <path d="M42.007 0h-24c-9.925 0-18 8.075-18 18v14c0 9.59 7.538 17.452 17 17.973v8.344a1.694 1.694 0 0 0 1.699 1.698c.44 0 .873-.173 1.198-.498l1.876-1.876C26.708 52.713 33.259 50 40.227 50h1.78c9.925 0 18-8.075 18-18V18c0-9.925-8.075-18-18-18zm16 32c0 8.822-7.178 16-16 16h-1.78c-7.502 0-14.556 2.921-19.86 8.226l-1.359 1.359V44a1 1 0 1 0-2 0v3.949c-8.356-.52-15-7.465-15-15.949V18c0-8.822 7.178-16 16-16h24c8.822 0 16 7.178 16 16v14z"></path>
   </symbol>
-  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
-    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
-  </symbol>
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
-    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
-    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
-  </symbol>
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
-    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
-  </symbol>
-  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
-    <circle cx="3.429" cy="20.571" r="3.429"></circle>
-    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
-    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
-  </symbol>
-  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
-    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
-  </symbol>
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="arrow">
-    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
-  </symbol>
-  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
-    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
-  </symbol>
-  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
-    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
-    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
-  </symbol>
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
-    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
-  </symbol>
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
-    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
-  </symbol>
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-  </symbol>
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
-    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-  </symbol>
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
-    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="scan">
+    <path d="M456.66 0H385c-8.284 0-15 6.716-15 15s6.716 15 15 15h71.66C470.632 30 482 41.368 482 55.341V127c0 8.284 6.716 15 15 15s15-6.716 15-15V55.341C512 24.826 487.174 0 456.66 0zM15 142c8.284 0 15-6.716 15-15V55.341C30 41.368 41.368 30 55.34 30H127c8.284 0 15-6.716 15-15s-6.716-15-15-15H55.34C24.826 0 0 24.826 0 55.341V127c0 8.284 6.716 15 15 15zm112 340H55.34C41.368 482 30 470.632 30 456.659V385c0-8.284-6.716-15-15-15s-15 6.716-15 15v71.659C0 487.174 24.826 512 55.34 512H127c8.284 0 15-6.716 15-15s-6.716-15-15-15zm370-112c-8.284 0-15 6.716-15 15v71.659C482 470.632 470.632 482 456.66 482H385c-8.284 0-15 6.716-15 15s6.716 15 15 15h71.66c30.515 0 55.34-24.826 55.34-55.341V385c0-8.284-6.716-15-15-15zM341.643 110h47.575c6.497 0 11.782 5.285 11.782 11.782v47.574c0 8.284 6.716 15 15 15s15-6.716 15-15v-47.574C431 98.743 412.256 80 389.218 80h-47.575c-8.284 0-15 6.716-15 15s6.716 15 15 15zM81 121.782v47.574c0 8.284 6.716 15 15 15s15-6.716 15-15v-47.574c0-6.497 5.286-11.782 11.782-11.782h47.575c8.284 0 15-6.716 15-15s-6.716-15-15-15h-47.575C99.744 80 81 98.743 81 121.782zM170.357 400h-47.575c-6.497 0-11.782-5.285-11.782-11.782v-47.574c0-8.284-6.716-15-15-15s-15 6.716-15 15v47.574C81 411.257 99.744 430 122.782 430h47.575c8.284 0 15-6.716 15-15s-6.716-15-15-15zM431 388.218v-47.574c0-8.284-6.716-15-15-15s-15 6.716-15 15v47.574c0 6.497-5.286 11.782-11.782 11.782h-47.575c-8.284 0-15 6.716-15 15s6.716 15 15 15h47.575C412.256 430 431 411.257 431 388.218zM1 256c0 8.284 6.716 15 15 15h480c8.284 0 15-6.716 15-15s-6.716-15-15-15H16c-8.284 0-15 6.716-15 15z"></path>
   </symbol>
 </svg>
-
 <footer class="footer">
   <div class="footer_inner wrap pale">
-    <img src='https://president810.github.io/Cpp-Interview-Notes/icons/apple-touch-icon.png' class="icon icon_2 transparent">
-    <p>Copyright<span class="year"></span> C&#43;&#43; INTERVIEW NOTES. All Rights Reserved</p><a class="to_top" href="#documentTop">
-  <svg class="icon">
-  <use xlink:href="#arrow"></use>
-</svg>
-</a>
-
+    <p>&copy;&nbsp;<span class="year"></span>&nbsp;C&#43;&#43; Interview Notes.
+    Designed by  <a href = '<no value>' title = 'Linkedin Profile'><no value></a></p>
   </div>
-</footer>
-    <script type="text/javascript" src="https://president810.github.io/Cpp-Interview-Notes/js/bundle.min.f5d8e7a2bd3141099760b9ae2314c632325773607ce2b1867b5a9a729484e5bf2629e8c325dec6fb00f2526e325a45e2620436c05256ed6e5cae00d47a305a00.js" integrity="sha512-9djnor0xQQmXYLmuIxTGMjJXc2B84rGGe1qacpSE5b8mKejDJd7G&#43;wDyUm4yWkXiYgQ2wFJW7W5crgDUejBaAA==" crossorigin="anonymous"></script>
-    
+</footer><script type="text/javascript" src="https://president810.github.io/Cpp-Interview-Notes/js/bundle.69353a6a68a26a818a66ae1bfabde28065bf92b30744daaae9dab05bd82d5be9a7784d739ec8a76daad658c275d2fb8d483329dfef5c6b3803fd3da39e338680.js" integrity="sha512-aTU6amiiaoGKZq4b&#43;r3igGW/krMHRNqq6dqwW9gtW&#43;mneE1znsinbarWWMJ10vuNSDMp3&#43;9cazgD/T2jnjOGgA==" crossorigin="anonymous"></script>
+
   </body>
 </html>
